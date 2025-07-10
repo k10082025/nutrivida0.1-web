@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nutrivida App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Nunito', sans-serif;
+    }
+    body {
+      background-color: #AEE6F9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 2rem;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 2rem;
+    }
+    h1, h2 {
+      color: #5E4FC9;
+      margin-bottom: 1rem;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+    }
+    button {
+      background-color: #CBA8F5;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Bienvenido a Nutrivida</h1>
+    <p>Una app de calendario saludable para un estilo de vida equilibrado.</p>
+    <input type="text" placeholder="Correo electrónico o teléfono" />
+    <button>Iniciar sesión</button>
+  </div>
+
+  <div class="card">
+    <h2>Perfil del Usuario</h2>
+    <input type="text" placeholder="Nombre completo" />
+    <input type="number" placeholder="Edad" />
+    <input type="number" placeholder="Peso (kg)" />
+    <input type="number" placeholder="Estatura (cm)" />
+    <select>
+      <option disabled selected>Objetivo principal</option>
+      <option>Bajar de peso</option>
+      <option>Subir de peso</option>
+      <option>Mantener estilo saludable</option>
+    </select>
+    <button>Guardar perfil</button>
+  </div>
+
+  <div class="card">
+    <h2>Calendario Saludable</h2>
+    <ul>
+      <li>💧 Hidratación adecuada</li>
+      <li>🍲 Comidas equilibradas</li>
+      <li>🧘‍♂️ Tiempo de meditación</li>
+      <li>🛌 Hora de dormir</li>
+      <li>🚶‍♀️ Ejercicio ligero</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Evaluación Inteligente</h2>
+    <p>Tu peso está dentro de un rango saludable.</p>
+    <strong>Recomendación:</strong>
+    <p>Continúa con buenos hábitos alimenticios.</p>
+  </div>
+
+  <div class="card footer">
+    <p>Creado con amor por:</p>
+    <p>Fabiana 💙 Josyel 💜 Astryd 💙 Fernanda 💜 Jennifer 💙</p>
+    <p>Versión 1.0 – Nutrivida App</p>
+  </div>
+</body>
+</html>
