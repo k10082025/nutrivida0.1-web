@@ -1,6 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,7 +23,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       padding: 2rem;
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
       margin-bottom: 2rem;
     }
     h1, h2 {
@@ -51,7 +49,39 @@
       font-size: 0.9rem;
       margin-top: 1rem;
     }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      text-align: center;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+    }
+    td:hover {
+      background-color: #f0f0ff;
+      cursor: pointer;
+    }
+    .tasks {
+      margin-top: 1rem;
+    }
   </style>
+  <script>
+    function showTasks(day) {
+      const tasks = document.getElementById('tasks');
+      tasks.innerHTML = `
+        <h3>Actividades sugeridas para el ${day}:</h3>
+        <ul>
+          <li>💧 Tomar 8 vasos de agua</li>
+          <li>🍲 Comer frutas y verduras</li>
+          <li>🧘‍♀️ Meditar por 10 minutos</li>
+          <li>🛌 Dormir al menos 8 horas</li>
+          <li>🚶‍♀️ Caminar 15 minutos</li>
+        </ul>
+      `;
+    }
+  </script>
 </head>
 <body>
   <div class="card">
@@ -59,9 +89,7 @@
     <p>Una app de calendario saludable para un estilo de vida equilibrado.</p>
     <input type="text" placeholder="Correo electrónico o teléfono" />
     <button>Iniciar sesión</button>
-  </div>
-
-  <div class="card">
+  </div>  <div class="card">
     <h2>Perfil del Usuario</h2>
     <input type="text" placeholder="Nombre completo" />
     <input type="number" placeholder="Edad" />
@@ -74,27 +102,40 @@
       <option>Mantener estilo saludable</option>
     </select>
     <button>Guardar perfil</button>
-  </div>
-
-  <div class="card">
+  </div>  <div class="card">
     <h2>Calendario Saludable</h2>
-    <ul>
-      <li>💧 Hidratación adecuada</li>
-      <li>🍲 Comidas equilibradas</li>
-      <li>🧘‍♂️ Tiempo de meditación</li>
-      <li>🛌 Hora de dormir</li>
-      <li>🚶‍♀️ Ejercicio ligero</li>
-    </ul>
-  </div>
-
-  <div class="card">
+    <table>
+      <tr>
+        <th>Dom</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th>
+      </tr>
+      <tr>
+        <td onclick="showTasks('1 de julio')">1</td>
+        <td onclick="showTasks('2 de julio')">2</td>
+        <td onclick="showTasks('3 de julio')">3</td>
+        <td onclick="showTasks('4 de julio')">4</td>
+        <td onclick="showTasks('5 de julio')">5</td>
+        <td onclick="showTasks('6 de julio')">6</td>
+        <td onclick="showTasks('7 de julio')">7</td>
+      </tr>
+      <tr>
+        <td onclick="showTasks('8 de julio')">8</td>
+        <td onclick="showTasks('9 de julio')">9</td>
+        <td onclick="showTasks('10 de julio')">10</td>
+        <td onclick="showTasks('11 de julio')">11</td>
+        <td onclick="showTasks('12 de julio')">12</td>
+        <td onclick="showTasks('13 de julio')">13</td>
+        <td onclick="showTasks('14 de julio')">14</td>
+      </tr>
+    </table>
+    <div class="tasks" id="tasks">
+      <p>Haz clic en un día para ver tus actividades.</p>
+    </div>
+  </div>  <div class="card">
     <h2>Evaluación Inteligente</h2>
     <p>Tu peso está dentro de un rango saludable.</p>
     <strong>Recomendación:</strong>
     <p>Continúa con buenos hábitos alimenticios.</p>
-  </div>
-
-  <div class="card footer">
+  </div>  <div class="card footer">
     <p>Creado con amor por:</p>
     <p>Fabiana 💙 Josyel 💜 Astryd 💙 Fernanda 💜 Jennifer 💙</p>
     <p>Versión 1.0 – Nutrivida App</p>
