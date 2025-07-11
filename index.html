@@ -1,144 +1,125 @@
 <!DOCTYPE html><html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nutrivida App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrivida</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Nunito', sans-serif;
-    }
-    body {
-      background-color: #AEE6F9;
-      color: #333;
-      display: flex;
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Nunito', sans-serif; }
+    body { background: #EAF9FF; color: #333; overflow-x: hidden; }
+    .screen {
+      width: 100vw;
+      height: 100vh;
+      display: none;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       padding: 2rem;
+      text-align: center;
     }
-    .card {
-      background-color: #fff;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 2rem;
-      width: 100%;
-      max-width: 420px;
-      margin-bottom: 2rem;
-    }
-    h1, h2 {
-      color: #5E4FC9;
-      margin-bottom: 1rem;
-    }
-    input, select, button {
-      width: 100%;
-      padding: 0.75rem;
-      margin: 0.5rem 0;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-    }
-    button {
+    .active { display: flex; }
+    h1, h2 { color: #4C3DA8; margin-bottom: 1rem; }
+    .btn, button {
       background-color: #CBA8F5;
       color: white;
-      font-weight: bold;
       border: none;
+      padding: 0.8rem 1.5rem;
+      margin: 1rem 0.5rem 0 0.5rem;
+      border-radius: 10px;
+      font-size: 1rem;
       cursor: pointer;
+    }
+    input, select {
+      width: 80%;
+      max-width: 300px;
+      padding: 0.7rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .calendar-table {
+      margin: 1rem auto;
+      border-collapse: collapse;
+    }
+    .calendar-table td, .calendar-table th {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: center;
+      cursor: pointer;
+    }
+    .calendar-table td:hover {
+      background: #f2f2f2;
     }
     .footer {
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 1rem;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-    th, td {
-      text-align: center;
-      padding: 0.75rem;
-      border: 1px solid #ddd;
-    }
-    td:hover {
-      background-color: #f0f0ff;
-      cursor: pointer;
-    }
-    .tasks {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
     }
   </style>
   <script>
-    function showTasks(day) {
-      const tasks = document.getElementById('tasks');
-      tasks.innerHTML = `
-        <h3>Actividades sugeridas para el ${day}:</h3>
-        <ul>
-          <li>💧 Tomar 8 vasos de agua</li>
-          <li>🍲 Comer frutas y verduras</li>
-          <li>🧘‍♀️ Meditar por 10 minutos</li>
-          <li>🛌 Dormir al menos 8 horas</li>
-          <li>🚶‍♀️ Caminar 15 minutos</li>
-        </ul>
-      `;
+    let current = 0;
+    function showScreen(index) {
+      document.querySelectorAll('.screen').forEach((s, i) => {
+        s.classList.toggle('active', i === index);
+      });
+      current = index;
     }
+    function next() { showScreen(current + 1); }
+    function prev() { showScreen(current - 1); }
+    function showTasks(day) {
+      document.getElementById("tasks").innerHTML = `<h3>Actividades sugeridas para el ${day}:</h3>
+        <ul><li>💧 Hidratación adecuada</li><li>🍽️ Comidas equilibradas</li><li>🧘‍♂️ Meditación</li><li>🚶‍♀️ Ejercicio</li><li>🛌 Descanso suficiente</li></ul>`;
+    }
+    window.onload = () => showScreen(0);
   </script>
 </head>
 <body>
-  <div class="card">
-    <h1>Bienvenido a Nutrivida</h1>
-    <p>Una app de calendario saludable para un estilo de vida equilibrado.</p>
-    <input type="text" placeholder="Correo electrónico o teléfono" />
-    <button>Iniciar sesión</button>
-  </div>  <div class="card">
-    <h2>Perfil del Usuario</h2>
-    <input type="text" placeholder="Nombre completo" />
-    <input type="number" placeholder="Edad" />
-    <input type="number" placeholder="Peso (kg)" />
-    <input type="number" placeholder="Estatura (cm)" />
+  <div class="screen active">
+    <h1>🌿 Nutrivida</h1>
+    <p>Tu app de calendario saludable para una vida equilibrada.</p>
+    <button class="btn" onclick="next()">Comenzar</button>
+  </div>  <div class="screen">
+    <h2>Regístrate</h2>
+    <input type="text" placeholder="Nombre completo">
+    <input type="number" placeholder="Edad">
+    <input type="number" placeholder="Peso (kg)">
+    <input type="number" placeholder="Estatura (cm)">
     <select>
-      <option disabled selected>Objetivo principal</option>
+      <option selected disabled>Objetivo principal</option>
       <option>Bajar de peso</option>
       <option>Subir de peso</option>
-      <option>Mantener estilo saludable</option>
+      <option>Mantenerse saludable</option>
     </select>
-    <button>Guardar perfil</button>
-  </div>  <div class="card">
+    <button onclick="next()">Siguiente</button>
+  </div>  <div class="screen">
     <h2>Calendario Saludable</h2>
-    <table>
+    <p>Abril 2024</p>
+    <table class="calendar-table">
+      <tr><th>D</th><th>L</th><th>M</th><th>X</th><th>J</th><th>V</th><th>S</th></tr>
       <tr>
-        <th>Dom</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th>
-      </tr>
-      <tr>
-        <td onclick="showTasks('1 de julio')">1</td>
-        <td onclick="showTasks('2 de julio')">2</td>
-        <td onclick="showTasks('3 de julio')">3</td>
-        <td onclick="showTasks('4 de julio')">4</td>
-        <td onclick="showTasks('5 de julio')">5</td>
-        <td onclick="showTasks('6 de julio')">6</td>
-        <td onclick="showTasks('7 de julio')">7</td>
-      </tr>
-      <tr>
-        <td onclick="showTasks('8 de julio')">8</td>
-        <td onclick="showTasks('9 de julio')">9</td>
-        <td onclick="showTasks('10 de julio')">10</td>
-        <td onclick="showTasks('11 de julio')">11</td>
-        <td onclick="showTasks('12 de julio')">12</td>
-        <td onclick="showTasks('13 de julio')">13</td>
-        <td onclick="showTasks('14 de julio')">14</td>
+        <td onclick="showTasks('14')">14</td>
+        <td onclick="showTasks('15')">15</td>
+        <td onclick="showTasks('16')">16</td>
+        <td onclick="showTasks('17')">17</td>
+        <td onclick="showTasks('18')">18</td>
+        <td onclick="showTasks('19')">19</td>
+        <td onclick="showTasks('20')">20</td>
       </tr>
     </table>
-    <div class="tasks" id="tasks">
-      <p>Haz clic en un día para ver tus actividades.</p>
+    <div id="tasks">
+      <p>Selecciona un día para ver las tareas.</p>
     </div>
-  </div>  <div class="card">
-    <h2>Evaluación Inteligente</h2>
+    <button onclick="next()">Siguiente</button>
+  </div>  <div class="screen">
+    <h2>Evaluación</h2>
     <p>Tu peso está dentro de un rango saludable.</p>
-    <strong>Recomendación:</strong>
+    <p>Para mantenimiento, céntrate en una dieta diversa y nutritiva.</p>
+    <h3>Recomendaciones</h3>
     <p>Continúa con buenos hábitos alimenticios.</p>
-  </div>  <div class="card footer">
-    <p>Creado con amor por:</p>
-    <p>Fabiana 💙 Josyel 💜 Astryd 💙 Fernanda 💜 Jennifer 💙</p>
-    <p>Versión 1.0 – Nutrivida App</p>
+    <div class="footer">
+      Creado con amor por:<br>
+      Fabiana 💙 Josyel 💜 Astryd 💙 Fernanda 💜 Jennifer 💙<br>
+      Versión 1.0 – Nutrivida App
+    </div>
   </div>
 </body>
-</html>
+                         </html>
